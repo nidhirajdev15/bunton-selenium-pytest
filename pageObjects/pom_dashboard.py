@@ -15,6 +15,7 @@ class Dashboard:
         self.header_bunton_for_candidates = (By.XPATH, "//div[contains(@class,'css-6n55t3')]/a[1]")
         self.header_bunton_for_companies = (By.XPATH, "//div[contains(@class,'css-6n55t3')]/a[2]")
         self.header_jobs = (By.XPATH, "//div[contains(@class,'css-6n55t3')]/a[3]")
+        self.footer_imprint = (By.CSS_SELECTOR, "a[href='/imprint']")
 
     def click_header_bunton_for_candidates(self):
         fluent_wait = WebDriverWait(self.driver, timeout=15, poll_frequency=0.5, ignored_exceptions=[ElementClickInterceptedException])

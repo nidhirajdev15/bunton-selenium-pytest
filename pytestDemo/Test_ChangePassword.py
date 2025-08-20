@@ -1,5 +1,6 @@
 # To validate the change password functionality
 import pytest
+import allure
 
 from pageObjects.pom_changepassword import ChangePassword
 from pageObjects.pom_homepage import HomePage
@@ -9,6 +10,7 @@ from pageObjects.pom_profile import Profile
 @pytest.mark.usefixtures("invoke_browser_for_class")
 class Test_ChangePassword:
 
+    @allure.title("Change Password")
     def test_change_password_with_valid_current_password(self):
         self.home = HomePage(self.driver, self.wait)
         self.home.accept_cookies()
