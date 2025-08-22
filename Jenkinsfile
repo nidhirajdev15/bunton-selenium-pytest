@@ -19,7 +19,6 @@ pipeline {
         bat '"C:\\Windows\\System32\\cmd.exe" /c "C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pytest --html=report.html --self-contained-html"'
             }
       }
-    }
 
     stage('Publish Report') {
     steps {
@@ -32,5 +31,6 @@ pipeline {
             allowMissing: false
         ])
     }
+}
 }
 }
