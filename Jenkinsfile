@@ -1,36 +1,43 @@
 pipeline {
-  agent any
-  environment { CI = 'true' }  // lets you toggle headless in tests if you like
-
-  stages {
-    stage('Checkout') {
-      steps { checkout scm }   // pulls this repo + branch automatically
+    agent any
+    environment { 
+        CI = 'true'   // lets you toggle headless in tests if needed
     }
 
-    stage('Install Dependencies') {
-      steps {
-        bat '"C:\\Windows\\System32\\cmd.exe" /c "C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pip install -r requirements.txt"'
-      }
-    }
-
-    stage('Run Tests') {
-      steps {
-        // adjust the path if your login test lives elsewhere
-        bat '"C:\\Windows\\System32\\cmd.exe" /c "C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pytest --html=report.html --self-contained-html"'
+    stages {
+        stage('Checkout') {
+            steps { 
+                checkout scm   // pulls this repo + branch automatically
             }
-      }
+        }
 
-    stage('Publish Report') {
-    steps {
-        publishHTML([
-            reportDir: '.',
-            reportFiles: 'report.html',
-            reportName: 'Selenium Test Report',
-            keepAll: true,
-            alwaysLinkToLastBuild: true,
-            allowMissing: false
-        ])
+        stage('Install Dependencies') {
+            steps {
+                powershell '''
+                & "C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pip install -r requirements.txt
+                '''
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                powershell '''
+                & "C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pytest --html=report.html --self-contained-html
+                '''
+            }
+        }
+
+        stage('Publish Report') {
+            steps {
+                publishHTML([
+                    reportDir: '.',
+                    reportFiles: 'report.html',
+                    reportName: 'Selenium Test Report',
+                    keepAll: true,
+                    alwaysLinkToLastBuild: true,
+                    allowMissing: false
+                ])
+            }
+        }
     }
-}
-}
 }
