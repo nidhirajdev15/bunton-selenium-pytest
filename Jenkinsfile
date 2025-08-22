@@ -28,7 +28,7 @@ pipeline {
             reportName: 'Selenium Test Report',
             keepAll: true,
             alwaysLinkToLastBuild: true,
-            allowMissing: false   // 👈 required parameter
+            allowMissing: false
         ])
     }
 }
