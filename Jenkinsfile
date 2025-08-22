@@ -13,16 +13,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                powershell '''
-                & "C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pip install -r requirements.txt
-                '''
+                bat '"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "& ''C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'' -m pip install -r requirements.txt"'
             }
         }
 
         stage('Run Tests') {
             steps {
-                powershell '''
-                & "C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pytest --html=report.html --self-contained-html
+                bat '"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "& ''C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'' -m pytest --html=report.html --self-contained-html
                 '''
             }
         }
