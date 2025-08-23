@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Print PATH') {
+            steps {
+                bat 'echo %PATH%'
+            }
+        }
         stage('Check Tools') {
             steps {
                 bat '"C:\\Windows\\System32\\cmd.exe" /c where git'
