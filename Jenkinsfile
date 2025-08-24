@@ -4,7 +4,7 @@ pipeline {
         stage('Print PATH') {
             steps {
                 echo "Running on: ${env.OS}"
-                bat 'echo %PATH%'
+                bat '"C:\\Windows\\System32\\cmd.exe" /c echo %PATH%'
             }
         }
         stage('Check Tools') {
