@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Print PATH') {
             steps {
+                echo "Running on: ${env.OS}"
                 bat 'echo %PATH%'
             }
         }
