@@ -12,7 +12,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe pytest pytestDemo\\Test_LoginWithEmail.py --html=report.html --self-contained-html -v'
+                bat 'C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pytest pytestDemo\\Test_LoginWithEmail.py --html=report.html --self-contained-html -v'
             }
         }
 
