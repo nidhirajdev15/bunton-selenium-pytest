@@ -6,13 +6,13 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat 'C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\pip.exe install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'pytest pytestDemo\\Test_LoginWithEmail.py --html=report.html --self-contained-html -v'
+                bat 'C:\\Users\\nidhi.rajdev_infobea\\AppData\\Local\\Programs\\Python\\Python313\\python.exe pytestDemo\\Test_LoginWithEmail.py --html=report.html --self-contained-html -v'
             }
         }
 
