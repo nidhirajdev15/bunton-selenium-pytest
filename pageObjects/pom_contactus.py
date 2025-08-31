@@ -1,28 +1,27 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 
+from pageObjects.pom_basepage import BasePage
 
-class ContactUs:
-    def __init__(self, driver, wait):
-        self.driver = driver
-        self.wait = wait
-        self.your_name = (By.CSS_SELECTOR, "input[name='name']")
-        self.your_email = (By.CSS_SELECTOR, "input[name='email']")
-        self.your_message = (By.CSS_SELECTOR, "div[class*='DraftStyleDefault']")
-        self.send_button = (By.CSS_SELECTOR, "button[class*='css-1jze55c']")
-        self.error_text = (By.CSS_SELECTOR, "p[id='my-helper-text']")
+
+class ContactUs(BasePage):
+    your_name = (By.CSS_SELECTOR, "input[name='name']")
+    your_email = (By.CSS_SELECTOR, "input[name='email']")
+    your_message = (By.CSS_SELECTOR, "div[class*='DraftStyleDefault']")
+    send_button = (By.CSS_SELECTOR, "button[class*='css-1jze55c']")
+    error_text = (By.CSS_SELECTOR, "p[id='my-helper-text']")
 
     def enter_your_name(self, name):
-        self.wait.until(expected_conditions.visibility_of_element_located(self.your_name)).send_keys(name)
+        self.perform_send_keys(self.your_name, name)
 
     def enter_your_email(self, email):
-        self.wait.until(expected_conditions.visibility_of_element_located(self.your_email)).send_keys(email)
+        self.perform_send_keys(self.your_email, email)
 
     def enter_message(self, message):
-        self.wait.until(expected_conditions.visibility_of_element_located(self.your_message)).send_keys(message)
+        self.perform_send_keys(self.your_message, message)
 
     def click_send(self):
-        self.wait.until(expected_conditions.visibility_of_element_located(self.send_button)).click()
+        self.wait_until_visible_then_perform_click(self.send_button)
 
     def validate_send_message_success(self):
         error_elements = self.driver.find_elements(self.error_text)

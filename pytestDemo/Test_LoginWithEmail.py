@@ -6,7 +6,6 @@ from utilities import excelReader
 
 
 class Test_Login:
-
     excel_file_path = "C:\\Users\\nidhi.rajdev_infobea\\PycharmProjects\\SeleniumWithPython_Q1\\testData\\test_data.xlsx"
     number_of_rows = excelReader.getRowCount(excel_file_path, "LoginData")
     number_of_columns = excelReader.getColumnCount(excel_file_path, "LoginData")

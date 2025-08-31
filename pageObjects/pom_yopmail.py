@@ -5,7 +5,6 @@ from pageObjects.pom_resetpassword import ResetPassword
 
 
 class Yopmail:
-
     def __init__(self, driver, wait):
         self.driver = driver
         self.wait = wait

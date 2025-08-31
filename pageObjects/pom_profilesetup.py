@@ -4,66 +4,64 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 import random
 
+from pageObjects.pom_basepage import BasePage
 from utilities import excelReader
 
 
-class ProfileSetup:
-    def __init__(self, driver, wait):
-        self.driver = driver
-        self.wait = wait
-        self.excel_file_path = "C:\\Users\\nidhi.rajdev_infobea\\PycharmProjects\\SeleniumWithPython_Q1\\testData\\test_data.xlsx"
-        self.education_sheet_name = "EducationData"
-        self.experience_sheet_name = "WorkExperienceData"
-        self.languages_sheet_name = "LanguagesData"
-        self.additional_infos_sheet_name = "AdditionalInfoData"
-        self.select_avatar_button = (By.CSS_SELECTOR, "button[label='Select an Avatar']")
-        self.random_avatar = "//div[@class='MuiBox-root css-0']/ul/li["
-        self.avatar_success_text = (By.XPATH, "//h2[contains(text(),'Thank you')]")
-        self.education = (By.CSS_SELECTOR, "button[label='Education']")
-        self.add_education = (By.CSS_SELECTOR, "button[label='Add education']")
-        self.graduation_degree = (By.CSS_SELECTOR, "input[name='certificateDegreeName']")
-        self.subject = (By.CSS_SELECTOR, "input[name='major']")
-        self.year_of_completion_dropdown = (By.CSS_SELECTOR, "div[class*='css-1i27l4i']")
-        self.year_of_completion_values = (By.CSS_SELECTOR, "li[class*='css-f885yq']")
-        self.save_button = (By.CSS_SELECTOR, "button[label='Save']")
-        self.work_experience = (By.CSS_SELECTOR, "button[label='Work Experience']")
-        self.add_a_position = (By.CSS_SELECTOR, "button[label='Add a position']")
-        self.job_title = (By.NAME, "jobTitle")
-        self.company = (By.NAME, "companyName")
-        self.department_dropdown = (By.XPATH, "//div[contains(text(), 'Select department')]")
-        self.all_dropdown_values = (By.CSS_SELECTOR, "li[class*='css-ljk74r']")
-        self.industry_dropdown = (By.XPATH, "//div[contains(text(), 'Select industry')]")
-        self.start_month_dropdown = (By.CSS_SELECTOR, "div[class='MuiBox-root css-1rr4qq7'] div[class='MuiBox-root css-1rr4qq7'] div[class='MuiBox-root css-0']")
-        self.start_year_dropdown = (By.CSS_SELECTOR, "div[class='MuiBox-root css-1rr4qq7'] div[class='MuiBox-root css-rzx6p5']")
-        self.end_month_dropdown = (By.CSS_SELECTOR, "div[class='MuiBox-root css-1fvbz9o'] div[class='MuiBox-root css-1rr4qq7'] div[class='MuiBox-root css-0']")
-        self.end_year_dropdown = (By.CSS_SELECTOR, "div[class='MuiBox-root css-1fvbz9o'] div[class='MuiBox-root css-rzx6p5']")
-        self.currently_working_here = (By.CSS_SELECTOR, "span[class*='css-wvc5yg']")
-        self.back_button = (By.CSS_SELECTOR, "div[class*='css-1so4p13'] span[class*='css-44vjup']")
-        self.upload_resume = (By.CSS_SELECTOR, "button[label='Upload Resume']")
-        self.languages = (By.CSS_SELECTOR, "button[label='Languages']")
-        self.completion_percentage = (By.CSS_SELECTOR, "p[class*='css-19w6wr7']")
-        self.error_text = (By.CSS_SELECTOR, "p[id='my-helper-text']")
-        self.saved_education_experience_list = (By.CSS_SELECTOR, "div[class*='css-1u6liug']")
-        self.saved_education_count = 0
-        self.saved_work_experience_count = 0
-        self.languages_button = (By.CSS_SELECTOR, "button[label='Languages']")
-        self.languages_values = (By.CSS_SELECTOR, "ul[class*='css-hly6u8'] li")
-        self.upload_resume = (By.CSS_SELECTOR, "button[label='Upload Resume']")
-        self.resume_file = (By.CSS_SELECTOR, "div[class*='css-77qm15'] input[type='file']")
-        self.upload_button = (By.CSS_SELECTOR, "p[class*='css-gels51']")
-        self.additional_infos = (By.CSS_SELECTOR, "button[label='Additional Infos']")
-        self.about_you_text_box = (By.CSS_SELECTOR, "div[class*='DraftEditor-content']")
-        self.your_profession = (By.NAME, "profession")
-        self.business_network_yes = (By.XPATH, "//div[@role='radiogroup']/label/p[contains(text(), 'Yes')]")
-        self.business_network_no = (By.XPATH, "//div[@role='radiogroup']/label/p[contains(text(), 'No')]")
-        self.business_network_others_field = (By.NAME, "otherProfessionalNetwork")
-        self.preferences_others_field = (By.NAME, "otherBenefit")
-        self.linkedin_profile_url = (By.NAME, "linkedinUrl")
-        self.setup_later_button = (By.CSS_SELECTOR, "button[class*='css-c49n8t']")
-        self.error_text = (By.CSS_SELECTOR, "p[id='my-helper-text']")
+class ProfileSetup(BasePage):
+    excel_file_path = "C:\\Users\\nidhi.rajdev_infobea\\PycharmProjects\\SeleniumWithPython_Q1\\testData\\test_data.xlsx"
+    education_sheet_name = "EducationData"
+    experience_sheet_name = "WorkExperienceData"
+    languages_sheet_name = "LanguagesData"
+    additional_infos_sheet_name = "AdditionalInfoData"
+    select_avatar_button = (By.CSS_SELECTOR, "button[label='Select an Avatar']")
+    random_avatar = "//div[@class='MuiBox-root css-0']/ul/li["
+    avatar_success_text = (By.XPATH, "//h2[contains(text(),'Thank you')]")
+    education = (By.CSS_SELECTOR, "button[label='Education']")
+    add_education = (By.CSS_SELECTOR, "button[label='Add education']")
+    graduation_degree = (By.CSS_SELECTOR, "input[name='certificateDegreeName']")
+    subject = (By.CSS_SELECTOR, "input[name='major']")
+    year_of_completion_dropdown = (By.CSS_SELECTOR, "div[class*='css-1i27l4i']")
+    year_of_completion_values = (By.CSS_SELECTOR, "li[class*='css-f885yq']")
+    save_button = (By.CSS_SELECTOR, "button[label='Save']")
+    work_experience = (By.CSS_SELECTOR, "button[label='Work Experience']")
+    add_a_position = (By.CSS_SELECTOR, "button[label='Add a position']")
+    job_title = (By.NAME, "jobTitle")
+    company = (By.NAME, "companyName")
+    department_dropdown = (By.XPATH, "//div[contains(text(), 'Select department')]")
+    all_dropdown_values = (By.CSS_SELECTOR, "li[class*='css-ljk74r']")
+    industry_dropdown = (By.XPATH, "//div[contains(text(), 'Select industry')]")
+    start_month_dropdown = (By.CSS_SELECTOR, "div[class='MuiBox-root css-1rr4qq7'] div[class='MuiBox-root css-1rr4qq7'] div[class='MuiBox-root css-0']")
+    start_year_dropdown = (By.CSS_SELECTOR, "div[class='MuiBox-root css-1rr4qq7'] div[class='MuiBox-root css-rzx6p5']")
+    end_month_dropdown = (By.CSS_SELECTOR, "div[class='MuiBox-root css-1fvbz9o'] div[class='MuiBox-root css-1rr4qq7'] div[class='MuiBox-root css-0']")
+    end_year_dropdown = (By.CSS_SELECTOR, "div[class='MuiBox-root css-1fvbz9o'] div[class='MuiBox-root css-rzx6p5']")
+    currently_working_here = (By.CSS_SELECTOR, "span[class*='css-wvc5yg']")
+    back_button = (By.CSS_SELECTOR, "div[class*='css-1so4p13'] span[class*='css-44vjup']")
+    upload_resume = (By.CSS_SELECTOR, "button[label='Upload Resume']")
+    languages = (By.CSS_SELECTOR, "button[label='Languages']")
+    completion_percentage = (By.CSS_SELECTOR, "p[class*='css-19w6wr7']")
+    error_text = (By.CSS_SELECTOR, "p[id='my-helper-text']")
+    saved_education_experience_list = (By.CSS_SELECTOR, "div[class*='css-1u6liug']")
+    saved_education_count = 0
+    saved_work_experience_count = 0
+    languages_button = (By.CSS_SELECTOR, "button[label='Languages']")
+    languages_values = (By.CSS_SELECTOR, "ul[class*='css-hly6u8'] li")
+    upload_resume = (By.CSS_SELECTOR, "button[label='Upload Resume']")
+    resume_file = (By.CSS_SELECTOR, "div[class*='css-77qm15'] input[type='file']")
+    upload_button = (By.CSS_SELECTOR, "p[class*='css-gels51']")
+    additional_infos = (By.CSS_SELECTOR, "button[label='Additional Infos']")
+    about_you_text_box = (By.CSS_SELECTOR, "div[class*='DraftEditor-content']")
+    your_profession = (By.NAME, "profession")
+    business_network_yes = (By.XPATH, "//div[@role='radiogroup']/label/p[contains(text(), 'Yes')]")
+    business_network_no = (By.XPATH, "//div[@role='radiogroup']/label/p[contains(text(), 'No')]")
+    business_network_others_field = (By.NAME, "otherProfessionalNetwork")
+    preferences_others_field = (By.NAME, "otherBenefit")
+    linkedin_profile_url = (By.NAME, "linkedinUrl")
+    setup_later_button = (By.CSS_SELECTOR, "button[class*='css-c49n8t']")
+    error_text = (By.CSS_SELECTOR, "p[id='my-helper-text']")
 
     def click_education(self):
-        self.wait.until(expected_conditions.visibility_of_element_located(self.education)).click()
+        self.wait_until_visible_then_perform_click(self.education)
         try:
             assert self.wait.until(expected_conditions.url_contains("/addDetails/edu")) is True
         except Exception as e:
@@ -79,7 +77,7 @@ class ProfileSetup:
             user_subject_list.append(excelReader.readData(self.excel_file_path, self.education_sheet_name, education_data, 2))
             user_year_of_completion_list.append(excelReader.readData(self.excel_file_path, self.education_sheet_name, education_data, 3))
         for item in range(0, number_of_rows - 2):
-            self.wait.until(expected_conditions.visibility_of_element_located(self.add_education)).click()
+            self.wait_until_visible_then_perform_click(self.add_education)
             try:
                 if self.wait.until(expected_conditions.text_to_be_present_in_element((By.XPATH, "//label[normalize-space()='Graduation degree*']"), "Graduation")):
                     self.driver.find_element(*self.graduation_degree).send_keys(user_graduation_degree_list[item])
@@ -108,16 +106,15 @@ class ProfileSetup:
         saved_education_values = self.wait.until(expected_conditions.visibility_of_all_elements_located(self.saved_education_experience_list))
         assert self.saved_education_count == len(saved_education_values)
         time.sleep(5)
-        self.wait.until(expected_conditions.presence_of_element_located(self.back_button)).click()
+        self.wait_until_present_then_perform_click(self.back_button)
         try:
-            self.wait.until(expected_conditions.visibility_of_element_located(
-                (By.CSS_SELECTOR, "button[label='Education'] span svg[data-testid='DoneIcon']")))
+            self.wait_until_visible((By.CSS_SELECTOR, "button[label='Education'] span svg[data-testid='DoneIcon']"))
             print("Education details saved successfully")
         except Exception as e:
             print(f"Unable to save Education details due to :{e}")
 
     def click_work_experience(self):
-        self.wait.until(expected_conditions.visibility_of_element_located(self.work_experience)).click()
+        self.wait_until_visible_then_perform_click(self.work_experience)
         try:
             assert self.wait.until(expected_conditions.url_contains("/addDetails/exp")) is True
         except Exception as e:
@@ -145,7 +142,7 @@ class ProfileSetup:
             user_end_month.append(excelReader.readData(self.excel_file_path, self.experience_sheet_name, experience_data, 8))
             user_end_year.append(excelReader.readData(self.excel_file_path, self.experience_sheet_name, experience_data, 9))
         for item in range(0, number_of_rows - 2):
-            self.wait.until(expected_conditions.visibility_of_element_located(self.add_a_position)).click()
+            self.wait_until_visible_then_perform_click(self.add_a_position)
             try:
                 if self.wait.until(expected_conditions.text_to_be_present_in_element((By.XPATH, "//label[normalize-space()='Job title*']"), "Job title")):
                     self.driver.find_element(*self.job_title).send_keys(user_job_title[item])
@@ -205,17 +202,16 @@ class ProfileSetup:
         saved_work_experience = self.wait.until(expected_conditions.visibility_of_all_elements_located(self.saved_education_experience_list))
         assert self.saved_work_experience_count == len(saved_work_experience)
         time.sleep(5)
-        self.wait.until(expected_conditions.presence_of_element_located(self.back_button)).click()
+        self.wait_until_visible_then_perform_click(self.back_button)
         try:
-            self.wait.until(expected_conditions.visibility_of_element_located(
-                (By.CSS_SELECTOR, "button[label='Work Experience'] span svg[data-testid='DoneIcon']")))
+            self.wait_until_visible((By.CSS_SELECTOR, "button[label='Work Experience'] span svg[data-testid='DoneIcon']"))
             print("Work Experience saved successfully")
         except Exception as e:
             print(f"Unable to save Work Experience due to :{e}")
 
     def click_languages(self):
         try:
-            self.wait.until(expected_conditions.visibility_of_element_located(self.languages_button)).click()
+            self.wait_until_visible_then_perform_click(self.languages_button)
             assert self.wait.until(expected_conditions.url_contains("/profileSetup/LanguagesDetail")) is True
         except Exception as e:
             print(f"Unable to navigate to Select Languages screen due to: {e}")
@@ -243,7 +239,7 @@ class ProfileSetup:
             print(f"Languages not saved due to :{e}")
 
     def click_upload_resume(self):
-        self.wait.until(expected_conditions.presence_of_element_located(self.upload_resume)).click()
+        self.wait_until_present_then_perform_click(self.upload_resume)
 
     def upload_resume_file(self):
         try:
@@ -265,20 +261,19 @@ class ProfileSetup:
 
     def validate_resume_upload_success(self):
         try:
-            self.wait.until(expected_conditions.visibility_of_element_located(
-                (By.CSS_SELECTOR, "button[label='Upload Resume'] span svg[data-testid='DoneIcon']")))
+            self.wait_until_visible((By.CSS_SELECTOR, "button[label='Upload Resume'] span svg[data-testid='DoneIcon']"))
             print("Resume uploaded successfully")
         except Exception as e:
             print(f"Resume upload failed due to :{e}")
 
     def click_select_avatar(self):
-        self.wait.until(expected_conditions.visibility_of_element_located(self.select_avatar_button)).click()
+        self.wait_until_visible_then_perform_click(self.select_avatar_button)
 
     def select_avatar(self):
         random_number = random.randint(1, 20)
         avatar = self.random_avatar + str(random_number) + "]"
         time.sleep(5)
-        self.wait.until(expected_conditions.presence_of_element_located((By.XPATH, avatar))).click()
+        self.wait_until_present_then_perform_click((By.XPATH, avatar))
 
     def save_avatar(self):
         try:
@@ -287,16 +282,16 @@ class ProfileSetup:
             print(f"Unable to save the languages due to :{e}")
 
     def validate_save_avatar_success(self):
-        avatar_success = self.wait.until(expected_conditions.visibility_of_element_located(self.avatar_success_text)).text
+        avatar_success = self.wait_until_visible(self.avatar_success_text).text
         assert "Thank you for selecting your avatar." in avatar_success
 
     def click_additional_infos(self):
         time.sleep(4)
-        self.wait.until(expected_conditions.visibility_of_element_located(self.additional_infos)).click()
+        self.wait_until_visible_then_perform_click(self.additional_infos)
 
     def enter_about_you(self):
         about_you_text = excelReader.readData(self.excel_file_path, "AdditionalInfoData", 3, 1)
-        self.wait.until(expected_conditions.visibility_of_element_located(self.about_you_text_box)).send_keys(about_you_text)
+        self.perform_send_keys(self.about_you_text_box, about_you_text)
 
     def enter_your_profession(self):
         self.wait.until(expected_conditions.presence_of_element_located(self.your_profession)).send_keys(excelReader.readData(self.excel_file_path, "AdditionalInfoData", 3, 2))
@@ -313,7 +308,7 @@ class ProfileSetup:
                     end_index = business_network.find(')')
                     self.driver.find_element(*self.business_network_others_field).send_keys(business_network[start_index+1: end_index])
                 else:
-                    self.wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "//p[contains(text(), '"+business_network+"')]"))).click()
+                    self.wait_until_visible_then_perform_click((By.XPATH, "//p[contains(text(), '"+business_network+"')]"))
         elif is_business_member == "No":
             self.driver.find_element(*self.business_network_no).click()
 
@@ -327,16 +322,16 @@ class ProfileSetup:
                 end_index = preferences.find(')')
                 self.driver.find_element(*self.preferences_others_field).send_keys(preferences[start_index+1:  end_index])
             else:
-                self.wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "//p[contains(text(), '"+preferences+"')]"))).click()
+                self.wait_until_visible_then_perform_click((By.XPATH, "//p[contains(text(), '"+preferences+"')]"))
 
     def enter_linkedin_url(self):
         linkedin_url = excelReader.readData(self.excel_file_path, self.additional_infos_sheet_name, 3, 6)
-        self.wait.until(expected_conditions.visibility_of_element_located(self.linkedin_profile_url)).send_keys(linkedin_url)
+        self.perform_send_keys(self.linkedin_profile_url, linkedin_url)
 
     def click_save_additional_infos(self):
-        self.wait.until(expected_conditions.visibility_of_element_located(self.save_button)).click()
+        self.wait_until_visible_then_perform_click(self.save_button)
         try:
-            error_message = self.wait.until(expected_conditions.visibility_of_element_located(self.error_text)).text
+            error_message = self.wait_until_visible(self.error_text).text
             error_occurred = True
             if error_occurred:
                 print(f"Unable to save additional info details due to :{error_message}")
@@ -348,8 +343,7 @@ class ProfileSetup:
 
     def validate_additional_info_save_success(self):
         try:
-            self.wait.until(expected_conditions.visibility_of_element_located(
-                (By.CSS_SELECTOR, "button[label='Additional Infos'] span svg[data-testid='DoneIcon']")))
+            self.wait_until_visible((By.CSS_SELECTOR, "button[label='Additional Infos'] span svg[data-testid='DoneIcon']"))
             print("Additional info saved successfully")
         except Exception as e:
             print(f"Additional info save failed due to :{e}")

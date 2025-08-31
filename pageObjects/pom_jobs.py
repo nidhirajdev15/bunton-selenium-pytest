@@ -16,6 +16,7 @@ class Jobs:
         self.search_button = (By.CSS_SELECTOR, "button[class*='css-uja24m']")
         self.more_info_button = (By.CSS_SELECTOR, "a[class*='css-h8khix']")
         self.jobs_count = (By.CSS_SELECTOR, "div[class*='css-anxli']")
+        self.apply_job_button = (By.CSS_SELECTOR, "div[class*='css-1xaqcky'] div[class*='3il2k9'] button[label='Bewerben']")
 
     def enter_search_keyword(self, search_keyword):
         self.wait.until(expected_conditions.visibility_of_element_located(self.search_field)).send_keys(search_keyword)
@@ -67,5 +68,5 @@ class Jobs:
 
     def validate_search_keyword_success(self):
         job_count_text = self.wait.until(expected_conditions.visibility_of_element_located(self.jobs_count)).text
-        start_index = job_count_text.find('(')
-        end_index = job_count_text.find(')')
+        # start_index = job_count_text.find('(')
+        # end_index = job_count_text.find(')')
